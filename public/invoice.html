@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="new_invoice">
+    <section style="width: 800px; padding: 20px 20px; font-family: 'Poppins',sans-serif;">
+      <div class="pha-header">
+        <div style="margin: 10px 0px; display: flex; justify-content: start; align-items: center;">
+          <h4 style="font-size: 15px;  color:blue;  font-weight: 600;   text-transform: uppercase;">Quotation
+            Invoice
+          </h4>
+          <!-- <h4 style="font-size: 12px; font-weight: 600;">One Place for any electronic item purchase</h4> -->
+        </div>
+        <div style="display: flex; align-items: center;">
+          <div style="width: 20%;">
+            <img src="logo_Url" alt="logo" width="100">
+          </div>
+          <div style="width: 80%; margin-left: 10px;">
+            <h3 style="    font-size: 14px;
+                    font-weight: 600;
+                    margin: 5px 0px;
+                    color: #787676;">{{branch_name}}</h3>
+            <p style="
+                        font-size: 12px;
+                        font-weight: 400;
+                        margin: 5px 0px;
+                    ">{{branch_address}}, {{branch_city}}, {{branch_zipcode}}</p>
+            <ul style="font-size: 12px;font-weight: 400;margin: 5px 0px;column-count: 2;list-style: none; padding: 0;">
+              <li style="margin-right: 5px;"><b>Mobile:</b> {{branch_mobile}}</li>
+              <li style="margin-right: 5px;"><b>GSTIN: </b> {{branch_gst}}</li>
+              <li style="margin-right: 5px;"><b>PAN Number:</b> {{branch_pan}}</li>
+              <li style="margin-right: 5px;"><b>Email:</b>{{branch_email}}</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          style="display: flex;flex-direction: row;justify-content:
+                    space-between;border-top: 3px solid #000;padding: 0px 30px; margin: 10px 0px 20px; background-color: #e4e4e4;">
+          <h3 style="font-size: 12px;font-weight: 600;margin: 10px 0px;">Quotation No : <span
+              style="font-weight: 500;">{{quotation_no}}</span>
+          </h3>
+          <h3 style="font-size: 12px;font-weight: 600;margin: 10px 0px;">Quotation Date : <span
+              style="font-weight: 500;">{{quotation_date}} {{time}}</span></h3>
+          <h3 style="font-size: 12px;font-weight: 600;margin: 10px 0px;">Due Date : <span
+              style="font-weight: 500;">{{due_date}}</span></h3>
+        </div>
+        <div style="width: 50%;">
+          <h4 style="font-size: 12px; font-weight: 600;margin: 5px 0px;">Ship To</h4>
+          <h5 style="font-size: 12px; font-weight: 600;margin: 5px 0px;">{{customer_name}}</h5>
+          <p style="font-size: 12px;  font-weight: 400;margin: 5px 0px;">{{customer_address}}
+          </p>
+        </div>
+      </div>
+      <table style="width: 100%; border-bottom: 1px solid #000;
+                    border-collapse: collapse;">
+        <tbody>
+          <tr>
+            <th style="border-bottom: 1px solid #000;    font-size: 14px;
+                                border-collapse: collapse; padding: 5px 10px 5px
+                                0px;text-align:start;">
+              Product
+            </th>
+            <!-- <th style="border-bottom: 1px solid #000;    font-size: 14px;
+                                border-collapse: collapse; padding: 5px 10px 5px
+                                0px;text-align: end;">
+                HSN
+              </th> -->
+            <th style="border-bottom: 1px solid #000;    font-size: 14px;
+                                border-collapse: collapse; padding: 5px 10px 5px
+                                0px;text-align: end;">
+              Qty </th>
+            <th style="border-bottom: 1px solid #000;    font-size: 14px;
+                                border-collapse: collapse; padding: 5px 10px 5px
+                                0px;text-align: end;">
+              Unit Price</th>
+            <th style="border-bottom: 1px solid #000;    font-size: 14px;
+                            border-collapse: collapse; padding: 5px 10px 5px
+                            0px;text-align: end;">
+              Gross Amount</th>
+            <th style="border-bottom: 1px solid #000;    font-size: 14px;
+                                border-collapse: collapse; padding: 5px 10px 5px
+                                0px;text-align: end;">
+              Tax Amount </th>
+            <th style="border-bottom: 1px solid #000;    font-size: 14px;
+                            border-collapse: collapse; padding: 5px 10px 5px
+                            0px;text-align: end;">
+              Discount Amount </th>
+            <th style="border-bottom: 1px solid #000;    font-size: 14px;
+                                border-collapse: collapse; padding: 5px 10px 5px
+                                0px;text-align: end;">
+              Net Amount </th>
+          </tr>
+          <!-- *ngFor="let invoice_item of getFormData(); let i = index" -->
+          <tr>
+            {{items}}
+            <!-- <td style="padding: 10px 2px; font-size: 14px;">{{item_name}}</td>
+              <td style="padding: 10px 2px; text-align: end; font-size: 14px;"> </td>
+              <td style="padding: 10px 2px; text-align: end; font-size: 14px;">{{quantity}}</td>
+              <td style="padding: 10px 2px; text-align: end; font-size: 14px;">{{purchase_price}}</td>
+              <td style="padding: 10px 2px; text-align: end; font-size: 14px;">{{total_amount}}</td>
+              <td style="padding: 10px 2px; text-align: end; font-size: 14px;">{{tax_amount}}</td>
+              <td style="padding: 10px 2px; text-align: end; font-size: 14px;">{{discount_amount}} </td>
+              <td style="padding: 10px 2px; text-align: end; font-size: 14px;">{{total_net_amount}} </td> -->
+          </tr>
+
+          <!-- <tr style="border-top:3px solid #000">
+                        <td colspan="2" style="padding: 10px 2px;">SUBTOTAL</td>
+                        <td style="padding: 10px 2px; text-align: end;">1</td>
+                        <td colspan="2" style="padding: 10px 2px; text-align: end;">₹ 3,813.34</td>
+                        <td style="padding: 10px 2px; text-align: end;">₹ 24,999</td>
+                    </tr> -->
+        </tbody>
+      </table>
+
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 50%;">
+          <h3 style="font-size: 14px; margin: 8px 0px;text-transform: uppercase;">
+            Bank Details</h3>
+          <h4 style=" font-size: 12px; font-weight: 500;margin: 5px 0px;">Name : <span>{{bank_name}}</span></h4>
+          <h4 style="font-size: 12px;font-weight: 500; margin: 5px 0px; ">IFSC Code : <span>{{ifsc_code}}</span></h4>
+          <h4 style=" font-size: 12px; font-weight: 500;margin: 5px 0px;">Account Number : <span>{{account_no}}</span>
+          </h4>
+          <h4 style="font-size: 12px;font-weight: 500; margin: 5px 0px;">Branch Name : <span>{{Bank_branch_name}}</span>
+          </h4>
+          <h3 style="font-size: 14px; margin: 20px 0px 5px;text-transform: uppercase;">
+            Payment QR Code</h3>
+          <h4 style="font-size: 12px; font-weight: 500;margin: 5px 0px;">UPI ID : <span>{{upi_id}}</span></h4>
+          <div>
+            <img src="qr_image_url" alt="no image" height="200px" width="200px" />
+          </div>
+        </div>
+        <div style="width: 30%; text-align:end;">
+          <h4 style=" font-size: 12px; font-weight: 500;margin: 8px 0px;display: flex;justify-content: space-between;">
+            Tax Amount <span>₹ {{total_tax_amount}}</span></h4>
+          <!-- <h4 style=" font-size: 12px; font-weight: 500;margin: 8px 0px;display: flex;justify-content: space-between;">
+                Additional Charges<span>₹ {{this.over_additional_charges}}</span></h4> -->
+          <h4 style=" font-size: 12px; font-weight: 500;margin: 8px 0px;display: flex;justify-content: space-between;">
+            Additional Amount <sup style=" font-size: 8px;">Inculdes Delivery & Package</sup> <span>₹
+              {{additional_charges}}</span></h4>
+          <h4 style=" font-size: 12px; font-weight: 500;margin: 8px 0px;display: flex;justify-content: space-between;">
+            Gross Total <span>₹ {{gross_total_amount}}</span></h4>
+          <h4 style=" font-size: 12px; font-weight: 500;margin: 8px 0px;display: flex;justify-content: space-between;">
+            Discount Amount<span>₹ {{total_discount_amount}}</span></h4>
+          <!-- <h4
+              style="font-size: 12px;font-weight: 600;margin: 8px 0px;border-top: 1px solid #000;padding: 6px 0px;border-bottom: 1px solid #000;display: flex;justify-content: space-between;">
+             Net Total <span>₹ {{transformDecimalVB(2,this.over_Nettotal_amount)}}</span></h4> -->
+          <h4
+            style="font-size: 12px;font-weight: 600;margin: 8px 0px;border-top: 1px solid #000;padding: 6px 0px;border-bottom: 1px solid #000;display: flex;justify-content: space-between;">
+            Net Total <span>₹ {{all_total_net_amount}}</span></h4>
+          <div>
+            <div>
+              <b>
+                Final Amount (in words): {{words_total_net_amount}}
+              </b>
+            </div>
+          </div>
+          <label
+            style="font-size: 12px;font-weight: 600;padding: 6px 0px;display: flex;justify-content: space-between;">Signature</label>
+          <div>
+            <img src="signature_image_url" alt="no image" height="200px" width="200px" />
+          </div>
+        </div>
+      </div>
+      <!-- <div style="display: flex;justify-content: end;text-decoration: overline;">
+        <div><b>Total</b></div>
+        <div style="color: white;">asdfghjksdf</div>
+        <div><b>{{ totalAmount() }}</b></div>
+      </div> -->
+
+
+      <div style=" padding: 30px 0px; width: 100%;">
+        <h3 style="font-size: 14px; text-transform: uppercase; margin: 5px 0px;">Terms and Conditions</h3>
+        <p>
+          {{branch_terms}}
+        </p>
+        <!-- <ul style="list-style: decimal;margin: 10px 0px;padding-left: 25px;">
+            <li style="font-size: 12px;font-weight: 500; font-style: normal; margin: 8px 0px;">Goods once sold will not be
+              taken back or exchanged</li>
+            <li style="font-size: 12px;font-weight: 500; font-style: normal; margin: 8px 0px;">All disputes are subject to
+              north 24 Parganas jurisdiction only</li>
+          </ul> -->
+
+      </div>
+
+    </section>
+  </div>
+</body>
+
+</html>
